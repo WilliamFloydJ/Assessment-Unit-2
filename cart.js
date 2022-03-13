@@ -7,7 +7,6 @@
     creating customer objects.  
 */
 
-
 //////////////////PROBLEM 1////////////////////
 /*  
     Below is a cart array that has food objects
@@ -19,24 +18,27 @@
 */
 
 const cart = [
-    {
-        name: 'pizza', 
-        price: 9.99
-    }, 
-    {
-        name: 'pasta', 
-        price: 8.99
-    }, 
-    {
-        name: 'salad', 
-        price: 7.99
-    }
-]
+  {
+    name: "pizza",
+    price: 9.99,
+  },
+  {
+    name: "pasta",
+    price: 8.99,
+  },
+  {
+    name: "salad",
+    price: 7.99,
+  },
+];
 
 //CODE HERE
-
+const cartSum = cart.reduce(
+  (accumulator, currentValue) => accumulator + currentValue.price,
+  0
+);
+console.log(cartSum);
 // const summedPrice = cart.reduce(/* CALLBACK HERE */)
-
 
 //////////////////PROBLEM 2////////////////////
 /*  
@@ -54,9 +56,13 @@ const cart = [
 */
 
 //CODE HERE
+const calcFinalPrice = (cartTotal, couponValue, tax) => {
+  cartTotal = cartTotal * (tax + 1);
+  cartTotal = cartTotal - couponValue;
+  return cartTotal;
+};
 
-
-
+console.log(calcFinalPrice(cartSum, 5, 0.08));
 //////////////////PROBLEM 3////////////////////
 /*  
     In this problem, you'll create a model for 
@@ -79,7 +85,12 @@ const cart = [
 
 /*
     TEXT ANSWER HERE
-
+    Customer Object:
+    Name : string - To identify the customer
+    Age: number - To categorize the companies average demographic 
+    Meal: string - To see what item the customers buy the most
+    Rating: number - See how the customers rate our establishment
+    Feedback: string - See how we are doing and or how we can improve 
 */
 
 /*
@@ -88,3 +99,12 @@ const cart = [
 */
 
 //CODE HERE
+const customer = {
+  name: "Mr.Ramsay",
+  age: 55,
+  meal: "Beef Wellington",
+  rating: 1.4,
+  feedBack:
+    "The lamb souse was no where in sight. This pizza is so disgusting, if you take it to Italy you’ll get arrested.",
+};
+console.log(customer.feedBack);
