@@ -21,7 +21,15 @@
 
 //CODE HERE
 
-
+class Employee {
+  constructor(name, shifts) {
+    this.name = name;
+    this.shifts = shifts;
+  }
+  getSchedule() {
+    console.log(`${this.name} works on ${this.shifts}`);
+  }
+}
 
 /*
     Create a new instance of your class.
@@ -34,14 +42,14 @@
 */
 
 //CODE HERE
-
+const empOne = new Employee("Jim", "Friday, June 5th, 9:00 Pm to 5:00 AM");
 /*
     Call the `getSchedule` method on the
     `empOne` object.
 */
 
 //CODE HERE
-
+empOne.getSchedule();
 
 /*
     Make a copy of the empOne object
@@ -56,9 +64,8 @@
 */
 
 //CODE HERE
-
-
-
+const empTwo = { ...empOne, name: "Nick" };
+console.log(empTwo.name);
 //////////////////PROBLEM 2////////////////////
 /*  
     Write a class called Manager that *extends* 
@@ -83,9 +90,18 @@
 */
 
 //CODE HERE
-
-
-
+class Manager extends Employee {
+  constructor(name, shifts, employees) {
+    super(name, shifts);
+    this.employees = employees;
+  }
+  getEmployees() {
+    console.log(`${this.name} manages ${this.employees} . `);
+  }
+  addEmployee(emp) {
+    this.employees.push(emp);
+  }
+}
 /*
     Create a new instance of your class.
     Save it to a variable called `manager`.
@@ -98,27 +114,42 @@
 */
 
 //CODE HERE
-
-
+const manager = new Manager(
+  "Michael Scott",
+  "Monday - Friday, 9:00 AM - 5:00 PM",
+  [
+    "Jim",
+    "Pam",
+    "Dwight",
+    "Kevin",
+    "Angela",
+    "Kelly",
+    "Stanley",
+    "Meredith",
+    "Phyllis",
+  ]
+);
 /*
     Call the `getEmployees` method on the
     `manager` object.  
 */
 
 //CODE HERE
-
+manager.getEmployees();
 /*
     Call the `addEmployee` method on the 
     `manager` object passing in the string 
     'Coach' or whatever name you'd like.
 */
 
-//CODE HERE 
+//CODE HERE
+manager.addEmployee("Erin");
 
 /*
-    Call the `getEmployees` method on the
-    `manager` object again to confirm 
-    that an employee was added.
+Call the `getEmployees` method on the
+`manager` object again to confirm 
+that an employee was added.
 */
 
 //CODE HERE
+manager.getEmployees();
